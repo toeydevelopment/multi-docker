@@ -1,0 +1,35 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "nginx",
+      "image": "toeydocker/multi-nginx:v1",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["app-fibo", "api-fibo"]
+    },
+    {
+      "name": "api-node",
+      "image": "toeydocker/multi-server:v1",
+      "hostname": "api-fibo",
+      "essential": false
+    },
+    {
+      "name": "app-react",
+      "image": "toeydocker/multi-react:v1",
+      "hostname": "app-fibo",
+      "essential": false
+    },
+    {
+      "name": "worker-node",
+      "image": "toeydocker/multi-worker:v1",
+      "hostname": "worker",
+      "essential": false
+    }
+  ]
+}

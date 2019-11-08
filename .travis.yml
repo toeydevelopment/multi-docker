@@ -25,3 +25,16 @@ after_success:
   - docker push toeydocker/multi-docker-nginx:v1
   - docker push toeydocker/multi-docker-react:v1
 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "DockerReact-env"
+  bucket_name: "eelasticbeanstalk-us-east-2-781381994409/"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: 
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
