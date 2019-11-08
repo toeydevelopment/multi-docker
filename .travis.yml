@@ -8,8 +8,8 @@ services:
 # before_install:
 #   - docker build -t toeydocker/react-test:v1 -f ./app/Dockerfile.dev .
 
-# script:
-#   - ls
+script:
+  - echo $ACK
 #   - ls ./app
 #   - docker run -e CI=true toeydocker/react-test:v1 npm run test 
 
@@ -35,6 +35,6 @@ deploy:
   on:
     branch: master
   access_key_id: 
-    secure: $AWS_ACCESS_KEY
+    secure: $ACK
   secret_access_key:
-    secure: $AWS_SECRET_KEY
+    secure: $ACP
