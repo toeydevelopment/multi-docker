@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "8083:80" 
+    restart: always
+    depends_on: 
+      - api-fibo
+      - app-fibo
+  redis:
+    image: 'redis:latest'
+    ports: 
+      - "5432:5432"
+
+  pg:
+    image: 'postgres:latest'
+  
+  api-fibo:
+    build: 
+      context: ./api
+      dockerfile: Dockerfile.dev
+    working_dir: /api
+    volumes: 
+      - /api/node_modules
+      - ./api:/api
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGHOST=pg
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+    ports: 
+      - "5000:5000"
+    depends_on: 
+      - redis
+      - pg
+
+  app-fibo:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    working_dir: /app
+    volumes: 
+      - /app/node_modules
+      - ./app:/app
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - api-fibo
+
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile.dev
+    working_dir: /worker
+    volumes: 
+      - /worker/node_modules
+      - ./worker:/worker
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on: 
+      - redis
