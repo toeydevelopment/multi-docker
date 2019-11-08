@@ -12,10 +12,10 @@ script:
   - docker run -e CI=true toeydocker/multi-docker-react:v1 npm run test 
 
 after_success:
-  - docker build -t toeydocker/multi-docker-server:v1 -f ./api
-  - docker build -t toeydocker/multi-docker-worker:v1 -f ./worker
-  - docker build -t toeydocker/multi-docker-nginx:v1 -f ./nginx
-  - docker build -t toeydocker/multi-docker-react:v1 -f ./app
+  - docker build -t toeydocker/multi-docker-server:v1 ./api
+  - docker build -t toeydocker/multi-docker-worker:v1 ./worker
+  - docker build -t toeydocker/multi-docker-nginx:v1 ./nginx
+  - docker build -t toeydocker/multi-docker-react:v1 ./app
   #  LOGIN TO DOCKER REGISTRY
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push toeydocker/multi-docker-server:v1
