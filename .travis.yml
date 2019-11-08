@@ -30,8 +30,8 @@ deploy:
   region: "us-east-2"
   app: "multi-docker"
   env: "DockerReact-env"
-  bucket_name: "eelasticbeanstalk-us-east-2-781381994409/"
-  bucket_path: "docker-multi"
+  bucket_name: "elasticbeanstalk-us-east-2-781381994409"
+  bucket_path: "docker-react"
   on:
     branch: master
   access_key_id: 
