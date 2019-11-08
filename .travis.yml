@@ -12,7 +12,7 @@ script:
   - docker run -e CI=true toeydocker/multi-docker-react:v1 npm run test 
 
 after_success:
-  - docker build -t toeydocker/multi-docker-server:v1 -f ./server
+  - docker build -t toeydocker/multi-docker-server:v1 -f ./api
   - docker build -t toeydocker/multi-docker-worker:v1 -f ./worker
   - docker build -t toeydocker/multi-docker-nginx:v1 -f ./nginx
   - docker build -t toeydocker/multi-docker-react:v1 -f ./app
