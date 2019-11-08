@@ -5,13 +5,13 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - docker build -t toeydocker/react-test:v1 -f ./app/Dockerfile.dev .
+# before_install:
+#   - docker build -t toeydocker/react-test:v1 -f ./app/Dockerfile.dev .
 
-script:
-  - ls
-  - ls ./app
-  - docker run -e CI=true toeydocker/react-test:v1 npm run test 
+# script:
+#   - ls
+#   - ls ./app
+#   - docker run -e CI=true toeydocker/react-test:v1 npm run test 
 
 after_success:
   - docker build -t toeydocker/multi-docker-server:v1 ./api
