@@ -15,14 +15,14 @@
       "memory": 128
     },
     {
-      "name": "api-node",
+      "name": "api-fibo",
       "image": "toeydocker/multi-server:v1",
       "hostname": "api-fibo",
       "essential": false,
       "memory": 128
     },
     {
-      "name": "app-react",
+      "name": "app-fibo",
       "image": "toeydocker/multi-react:v1",
       "hostname": "app-fibo",
       "essential": false,
