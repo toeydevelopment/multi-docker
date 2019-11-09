@@ -11,7 +11,7 @@ services:
 script:
   - echo $ACK
   - ls ./app
-  - docker run -e CI=true toeydocker/react-test:v1 npm run test 
+  # - docker run -e CI=true toeydocker/react-test:v1 npm run test 
 
 after_success:
   - docker build -t toeydocker/multi-docker-server:v1 ./api
