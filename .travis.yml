@@ -30,11 +30,11 @@ deploy:
   region: "us-east-2"
   app: "multi-docker"
   env: "MultiDocker2-env"
-  bucket_name: "multi-docker2-s3234234"
+  bucket_name: "multi-docker2-s3"
   bucket_path: "multi-docker"
   on:
     branch: master
   access_key_id: 
-    secure: "$ACK"
+    secure: $ACCESS_KEY
   secret_access_key:
-    secure: "$ACP"
+    secure: $SECRET_ACCESS_KEY
