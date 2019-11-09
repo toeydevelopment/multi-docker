@@ -8,22 +8,22 @@ services:
 # before_install:
 #   - docker build -t toeydocker/react-test:v1 -f ./app/Dockerfile.dev .
 
-script:
-  - echo $ACK
-  - ls ./app
+# script:
+  # - echo $ACK
+  # - ls ./app
   # - docker run -e CI=true toeydocker/react-test:v1 npm run test 
 
 after_success:
   - docker build -t toeydocker/multi-docker-server:v1 ./api
   - docker build -t toeydocker/multi-docker-worker:v1 ./worker
   - docker build -t toeydocker/multi-docker-nginx:v1 ./nginx
-  - docker build -t toeydocker/multi-docker-react:v1 ./app
+  - docker build -t toeydocker/multi-docker-react:v2 ./app
   #  LOGIN TO DOCKER REGISTRY
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push toeydocker/multi-docker-server:v1
   - docker push toeydocker/multi-docker-worker:v1
   - docker push toeydocker/multi-docker-nginx:v1
-  - docker push toeydocker/multi-docker-react:v1
+  - docker push toeydocker/multi-docker-react:v2
 
 deploy:
   provider: elasticbeanstalk

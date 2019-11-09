@@ -23,7 +23,7 @@
     },
     {
       "name": "app-fibo",
-      "image": "toeydocker/multi-docker-react:v1",
+      "image": "toeydocker/multi-docker-react:v2",
       "hostname": "app-fibo",
       "essential": false,
       "memory": 128
