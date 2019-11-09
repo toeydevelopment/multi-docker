@@ -30,7 +30,7 @@ deploy:
   region: "us-east-2"
   app: "multi-docker"
   env: "MultiDocker2-env"
-  bucket_name: "multi-docker2-s3"
+  bucket_name: "multi-docker2-s3234234"
   bucket_path: "multi-docker"
   on:
     branch: master
