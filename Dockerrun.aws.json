@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "nginx",
-      "image": "toeydocker/multi-nginx:v1",
+      "image": "toeydocker/multi-docker-nginx:v1",
       "essential": true,
       "portMappings": [
         {
@@ -16,21 +16,21 @@
     },
     {
       "name": "api-fibo",
-      "image": "toeydocker/multi-server:v1",
+      "image": "toeydocker/multi-docker-server:v1",
       "hostname": "api-fibo",
       "essential": false,
       "memory": 128
     },
     {
       "name": "app-fibo",
-      "image": "toeydocker/multi-react:v1",
+      "image": "toeydocker/multi-docker-react:v1",
       "hostname": "app-fibo",
       "essential": false,
       "memory": 128
     },
     {
       "name": "worker-node",
-      "image": "toeydocker/multi-worker:v1",
+      "image": "toeydocker/multi-docker-worker:v1",
       "hostname": "worker",
       "essential": false,
       "memory": 128
