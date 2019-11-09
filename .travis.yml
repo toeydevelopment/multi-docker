@@ -27,10 +27,10 @@ script:
 
 deploy:
   provider: elasticbeanstalk
-  region: "ap-southeast-1"
+  region: "us-east-2"
   app: "multi-docker"
-  env: "MultiDocker-env"
-  bucket_name: "elasticbeanstalk-ap-southeast-1-781381994409"
+  env: "MutiDocker3-env"
+  bucket_name: "elasticbeanstalk-us-east-2-781381994409"
   bucket_path: "multi-docker"
   on:
     branch: master
